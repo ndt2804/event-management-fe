@@ -393,6 +393,7 @@
 
 // export default Home;
 import React, { useState, useEffect } from 'react';
+import { Callout } from '@radix-ui/themes';
 import { useAuth } from '../context/auth-context';
 import {
     Calendar,
@@ -414,8 +415,8 @@ import {
     Facebook,
     Linkedin
 } from 'lucide-react';
-
-// ... (keep the Event interface and other imports)
+import { InfoIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 interface Event {
     id: number;
     title: string;
@@ -427,6 +428,8 @@ interface Event {
 }
 
 const Home: React.FC = () => {
+    const { user } = useAuth();
+    console.log("User data:", user); // Kiểm tra dữ liệu user
     const [searchTerm, setSearchTerm] = useState('');
 
     const events: Event[] = [
@@ -479,7 +482,23 @@ const Home: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Hero Section */}
+            {!user?.isActive && (
+                <Callout.Root color="red" className="mb-4">
+                    <Callout.Icon>
+                        <InfoIcon />
+                    </Callout.Icon>
+                    <Callout.Text>
+                        Your account is not active. Please{" "}
+                        <Link to="/activate" className="text-red-600 font-medium underline">
+                            activate your account
+                        </Link>{" "}
+                        to continue.
+                    </Callout.Text>
+                </Callout.Root>
+            )}
+
             <section className="relative h-[700px]">
+
                 <div className="absolute inset-0">
                     <img
                         src="https://source.unsplash.com/random/1920x1080?concert"

@@ -4,6 +4,8 @@ import RootLayout from './Pages/layouts/RootLayout'
 import AuthLayout from './Pages/layouts/AuthLayout'
 import SignIn from './Pages/sign-in'
 import SignUp from './Pages/sign-up'
+import ForgotPassword from './Pages/forgot-password'
+import ChangePassword from './Pages/change-password'
 import Home from './Pages/home'
 import Profile from './Pages/profile'
 function App() {
@@ -14,6 +16,9 @@ function App() {
           <Route element={<AuthLayout />}>
             <Route path='/sign-in' element={<SignIn />} />
             <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
+            <Route path='/change-password' element={<ChangePassword />} />
+
           </Route>
           <Route element={<RootLayout />}>
             <Route path="/" element={<Home />} />

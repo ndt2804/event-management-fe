@@ -49,6 +49,25 @@ export const signOutAccount = async (): Promise<void> => {
 };
 
 
+export const forgotPasswordAccount = async (email: string): Promise<void> => {
+    try {
+        await axios.post(`${API_URL}/auth/forgot-password`, { email });
+    }
+    catch (error: any) {
+        console.error("❌ Forgot password failed:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || " Forgot password  failed");
+    }
+};
+
+export const changePasswordAccount = async (token: string, password: string): Promise<void> => {
+    try {
+        await axios.post(`${API_URL}/auth/change-password`, { token, password });
+    } catch (error: any) {
+        console.error("❌ Change password failed:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || "Change password failed");
+    }
+};
+
 export const getCookie = (name: string): string | null => {
     const cookies = document.cookie.split("; ");
     const cookie = cookies.find(row => row.startsWith(`${name}=`));

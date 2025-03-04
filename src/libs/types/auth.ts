@@ -3,14 +3,15 @@ export interface User {
     fullName: string;
     email: string;
     avatar?: string;
+    isActive: boolean;
 }
 
 export interface AuthContextType {
     user: User | null;
     isAuthenticated: boolean;
     isLoading: boolean;
-    isTokenExpired: boolean; // 🔹 Thiếu thuộc tính này gây lỗi
-    login: (user: User, token: string) => void; // 🔹 Thiếu login gây lỗi
+    isTokenExpired: boolean;
+    login: (user: User, token: string) => void;
     logout: () => Promise<void>;
 }
 
