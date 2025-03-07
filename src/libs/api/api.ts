@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SignInData, RegisterData, User } from "../types/auth";
+import { Event, CreateEventDto } from "../types/event";
 // ============================================================
 // AUTH API
 // ============================================================
@@ -82,4 +83,17 @@ export const setCookie = (name: string, value: string, days = 7): void => {
 
 export const deleteCookie = (name: string): void => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+};
+
+
+
+export const getAllEvents = async (): Promise<Event[]> => {
+    const response = await axios.get(`${API_URL}/events`);
+    return response.data;
+};
+
+// Create a new event
+export const createEvent = async (eventData: CreateEventDto): Promise<Event> => {
+    const response = await axios.post(`${API_URL}/events/create`, eventData);
+    return response.data;
 };

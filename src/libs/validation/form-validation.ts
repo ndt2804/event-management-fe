@@ -41,3 +41,14 @@ export const ChangePasswordValidation = Yup.object({
         .required("Confirm Password is required"),
 
 });
+
+export const EventValidation = Yup.object({
+    title: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
+    location: Yup.string().required('Required'),
+    startDate: Yup.date().required('Required'),
+    endDate: Yup.date().required('Required'),
+    saleStartTime: Yup.date().required('Required'),
+    category: Yup.string().required('Required'),
+    totalTickets: Yup.number().required('Required').min(1, 'Must be at least 1'),
+});
