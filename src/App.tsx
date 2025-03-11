@@ -4,6 +4,7 @@ import RootLayout from './Pages/layouts/RootLayout'
 import AuthLayout from './Pages/layouts/AuthLayout'
 import OrganizerLayout from './Pages/layouts/OrganizerLayout'
 import EventPage from './Pages/event'
+import EventDetail from './Pages/event-detail'
 import CreateEventPage from './Pages/create-event'
 import SignIn from './Pages/sign-in'
 import SignUp from './Pages/sign-up'
@@ -21,6 +22,7 @@ function App() {
             <Route path='/sign-up' element={<SignUp />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path='/change-password' element={<ChangePassword />} />
+
           </Route>
           <Route element={<OrganizerLayout />}>
             <Route path='/organizer/events' element={<EventPage />} />
@@ -29,6 +31,8 @@ function App() {
           </Route>
           <Route element={<RootLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/events/:eventId" element={<EventDetail />} />
+
             <Route path="/my-profile" element={<Profile />} />
           </Route>
         </Routes>

@@ -42,13 +42,13 @@ export const ChangePasswordValidation = Yup.object({
 
 });
 
-export const EventValidation = Yup.object({
-    title: Yup.string().required('Required'),
-    description: Yup.string().required('Required'),
-    location: Yup.string().required('Required'),
-    startDate: Yup.date().required('Required'),
-    endDate: Yup.date().required('Required'),
-    saleStartTime: Yup.date().required('Required'),
-    category: Yup.string().required('Required'),
-    totalTickets: Yup.number().required('Required').min(1, 'Must be at least 1'),
+export const EventValidation = Yup.object().shape({
+    title: Yup.string().required("Title is required"),
+    description: Yup.string().required("Description is required"),
+    location: Yup.string().required("Location is required"),
+    startDate: Yup.string().required("Start date is required"),
+    endDate: Yup.string().required("End date is required"),
+    saleStartTime: Yup.string().required("Sale start time is required"),
+    category: Yup.string().required("Category is required"),
+    totalTickets: Yup.number().required("Total tickets are required").positive().integer(),
 });

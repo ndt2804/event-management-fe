@@ -43,4 +43,6 @@ export interface CreateEventDto {
     saleStartTime: string;
     category: string;
     totalTickets: number;
+    banner: File;
+    images: File[];
 }
